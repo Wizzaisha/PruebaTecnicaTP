@@ -42,6 +42,6 @@ Steps to install the app:
   * npm run dev ó yarn dev
 
 
-[1] https://www.exchangerate-api.com/
-[2] https://nodejs.org/en
-[3] https://github.com/
+[1]: https://www.exchangerate-api.com/
+[2]: https://nodejs.org/en
+[3]: https://github.com/
