@@ -32,7 +32,7 @@ Para instalar la aplicación necesitarás lo siguiente:
 * *[GitHub][3]*.
 * Editor de código como Visual Studio Code.
 
-Steps to install the app:
+Pasos para instalar la app:
 
 1. Clonar el repositorio: https://github.com/Wizzaisha/PruebaTecnicaTP.git
 2. Abrir el repositorio en el editor de código.
