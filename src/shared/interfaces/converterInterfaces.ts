@@ -1,9 +1,12 @@
 
 
-export interface ConvertionModel {
+export interface ConvertionFormModel {
     convertFrom: string;
     convertTo: string;
     amountToConvert: number;
+}
+
+export interface ConversionHistoryModel extends ConvertionFormModel {
     amountConverted: number;
 }
 

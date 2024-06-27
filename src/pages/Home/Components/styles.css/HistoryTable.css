@@ -1,0 +1,6 @@
+.table-custom {
+    height: 456px;
+    max-height: 510px !important;
+    overflow-y: scroll;
+    padding-right: 20px;
+}

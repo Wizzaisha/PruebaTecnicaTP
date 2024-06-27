@@ -1,14 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CodesModel, ConvertionModel } from '../../shared/interfaces/converterInterfaces';
+import { CodesModel, ConversionHistoryModel } from '../../shared/interfaces/converterInterfaces';
 import { CodesResponseModel, ConversionResponseModel } from '../../shared/interfaces/apiInterfaces';
 import { getCodes, getConversion } from '../../shared/services/apiService';
 
 export interface ConverterState {
-    convertFrom: string;
-    convertTo: string;
-    amountToConvert: number;
     amountConverted: number;
-    conversionHistory: ConvertionModel[];
+    conversionHistory: ConversionHistoryModel[];
     getCodesStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
     getCodesError: string | null;
     getConversionStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -17,9 +14,6 @@ export interface ConverterState {
 }
 
 const initialState: ConverterState = {
-    convertFrom: '',
-    convertTo: '',
-    amountToConvert: 0,
     amountConverted: 0,
     conversionHistory: [],
     getCodesStatus: 'idle',
@@ -33,28 +27,33 @@ const converterSlice = createSlice({
     name: 'converter',
     initialState,
     reducers: {
-        handleConverter: (state, action: PayloadAction<ConvertionModel>) => {
-            const { convertFrom, convertTo, amountToConvert, amountConverted } = action.payload;
-            state.convertFrom = convertFrom;
-            state.convertTo = convertTo;
-            state.amountToConvert = amountToConvert;
-            state.amountConverted = amountConverted;
-        },
-        addConversionHistory: (state, action: PayloadAction<ConvertionModel>) => {
-            state.conversionHistory.push(action.payload);
-        },
         resetConversionHistory: (state) => {
             state.conversionHistory = initialState.conversionHistory;
         },
+        resetConversionStatus: (state) => {
+            state.amountConverted = 0;
+            state.getConversionStatus = 'idle';
+        }
     },
     extraReducers: (builder) => {
         builder
             .addCase(getConversion.pending, (state) => {
                 state.getConversionStatus = 'loading';
             })
-            .addCase(getConversion.fulfilled, (state, action: PayloadAction<ConversionResponseModel>) => {
+            .addCase(getConversion.fulfilled, (state, action) => {
                 state.getConversionStatus = 'succeeded';
-                console.log(action);
+                const responseData = action.payload as ConversionResponseModel;
+                state.amountConverted = responseData.conversion_result;
+                console.log('response', responseData);
+                const newHistory: ConversionHistoryModel = {
+                    amountConverted: responseData.conversion_result,
+                    amountToConvert: action.meta.arg.amountToConvert,
+                    convertFrom: responseData.base_code,
+                    convertTo: responseData.target_code,
+                }
+
+                state.conversionHistory.push(newHistory);
+
             })
             .addCase(getConversion.rejected, (state, action) => {
                 state.getConversionStatus = 'failed';
@@ -66,7 +65,6 @@ const converterSlice = createSlice({
             .addCase(getCodes.fulfilled, (state, action: PayloadAction<CodesResponseModel>) => {
                 state.getCodesStatus = 'succeeded';
                 const responseData = action.payload;
-                console.log(responseData);
                 state.codesList = responseData.supported_codes.map(item => {
                     return {
                         code: item[0],
@@ -81,5 +79,5 @@ const converterSlice = createSlice({
     },
 });
 
-export const { handleConverter, addConversionHistory, resetConversionHistory } = converterSlice.actions;
+export const { resetConversionHistory, resetConversionStatus } = converterSlice.actions;
 export default converterSlice.reducer;

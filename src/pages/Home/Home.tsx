@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ConverterForm from "./Components/ConverterForm";
 import HistoryTable from "./Components/HistoryTable";
-import { useAppDispatch } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { getCodes } from "../../shared/services/apiService";
 
 
@@ -9,9 +9,14 @@ const Home = () => {
 
     const dispatch = useAppDispatch();
 
+    const { getCodesStatus } = useAppSelector((state) => state.converter);
+
+
     useEffect(() => {
-        dispatch(getCodes());
-    }, [dispatch]);
+        if (getCodesStatus === 'idle') {
+            dispatch(getCodes());
+        }
+    }, [dispatch, getCodesStatus]);
 
     return (
         <>
