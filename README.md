@@ -2,7 +2,7 @@
 
 -------------------------------
 
-##EN
+## EN
 
 This is the development of an application with the functionality to convert currency by using the API *[ExchangeRate-API][1]*, Vite with React.ts, Redux, TailwindCSS and DaisyUI.
 
@@ -21,8 +21,9 @@ Steps to install the app:
 4. Exceute the command:
   * npm run dev or yarn dev
 
+-------------------------------
 
-##ES
+## ES
 
 Este es el desarrollo de una aplicación con la funcionalidad de convertir monedas por medio de la API *[ExchangeRate-API][1]*, Vite con React.ts, Redux, TailwindCSS y DaisyUI.
 
