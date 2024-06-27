@@ -1,10 +1,17 @@
+import { useEffect } from "react";
 import ConverterForm from "./Components/ConverterForm";
 import HistoryTable from "./Components/HistoryTable";
+import { useAppDispatch } from "../../app/hook";
+import { getCodes } from "../../shared/services/apiService";
 
 
 const Home = () => {
 
+    const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        dispatch(getCodes());
+    }, [dispatch]);
 
     return (
         <>

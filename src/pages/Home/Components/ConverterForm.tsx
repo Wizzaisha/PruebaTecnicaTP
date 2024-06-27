@@ -1,13 +1,12 @@
-import { useAppSelector, useAppDispatch } from "../../../app/hook";
+//import { useAppSelector, useAppDispatch } from "../../../app/hook";
 import PrimaryButton from "../../../shared/components/PrimaryButton";
-
 
 
 const ConverterForm = () => {
 
-    const { value } = useAppSelector((state) => state.counter);
+    // const { value } = useAppSelector((state) => state.counter);
 
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
 
     const handleClickConvertor = () => {
         console.log('omg click')
