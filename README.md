@@ -1,30 +1,46 @@
-# React + TypeScript + Vite
+# Currency Converter Assessment 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-------------------------------
 
-Currently, two official plugins are available:
+##EN
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is the development of an application with the functionality to convert currency by using the API *[ExchangeRate-API][1]*, Vite with React.ts, Redux, TailwindCSS and DaisyUI.
 
-## Expanding the ESLint configuration
+In order to install this application locally, you'll need:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+* *[Nodejs][2]* version 14x or superior.
+* *[GitHub][3]*.
+* Code editor like Visual Studio Code.
 
-- Configure the top-level `parserOptions` property like this:
+Steps to install the app:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Clone the repository: https://github.com/Wizzaisha/PruebaTecnicaTP.git
+2. Open the the repository with a code editor.
+3. Excecute the comand:
+  * npm install or yarn
+4. Exceute the command:
+  * npm run dev or yarn dev
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+##ES
+
+Este es el desarrollo de una aplicación con la funcionalidad de convertir monedas por medio de la API *[ExchangeRate-API][1]*, Vite con React.ts, Redux, TailwindCSS y DaisyUI.
+
+Para instalar la aplicación necesitarás lo siguiente:
+* *[Nodejs][2]* versión 14x or superior.
+* *[GitHub][3]*.
+* Editor de código como Visual Studio Code.
+
+Steps to install the app:
+
+1. Clonar el repositorio: https://github.com/Wizzaisha/PruebaTecnicaTP.git
+2. Abrir el repositorio en el editor de código.
+3. Ejecutar el comando:
+  * npm install ó yarn
+4. Ejecutar el comando:
+  * npm run dev ó yarn dev
+
+
+[1] https://www.exchangerate-api.com/
+[2] https://nodejs.org/en
+[3] https://github.com/
